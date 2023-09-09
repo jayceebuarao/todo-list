@@ -20,6 +20,10 @@ class _ToDosState extends State<ToDos> {
           Text('Hello world'),
         ],
       ),
+      floatingActionButton: FloatingActionButton.large(
+        child: const Icon(Icons.add),
+        onPressed: () {},
+      ),
     );
   }
 }
