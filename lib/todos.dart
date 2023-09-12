@@ -22,7 +22,7 @@ class _ToDosState extends State<ToDos> {
   void openNewToDoModal() {
     showModalBottomSheet(
         context: context,
-        builder: (context) => NewTodo(updateToDo: addNewToDo));
+        builder: (context) => Scaffold(body: NewTodo(updateToDo: addNewToDo)));
   }
 
   @override
