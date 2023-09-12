@@ -3,7 +3,9 @@ import 'package:todo_list/widgets/models/todo.dart';
 import 'package:todo_list/widgets/todos_list/todo_item.dart';
 
 class ToDoList extends StatelessWidget {
-  const ToDoList({super.key, required this.todos});
+  const ToDoList({super.key, required this.todos, required this.onDismiss});
+
+  final void Function(ToDo) onDismiss;
 
   final List<ToDo> todos;
 
@@ -11,7 +13,10 @@ class ToDoList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: todos.length,
-      itemBuilder: (context, index) => ToDoItem(todo: todos[index]),
+      itemBuilder: (context, index) => Dismissible(
+          key: ValueKey(todos[index].task),
+          onDismissed: (direction) => onDismiss(todos[index]),
+          child: ToDoItem(todo: todos[index])),
     );
   }
 }

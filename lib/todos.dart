@@ -19,6 +19,12 @@ class _ToDosState extends State<ToDos> {
     });
   }
 
+  void removeToDo(ToDo removeTodo) {
+    setState(() {
+      _registeredToDos.remove(removeTodo);
+    });
+  }
+
   void openNewToDoModal() {
     showModalBottomSheet(
         context: context,
@@ -33,7 +39,11 @@ class _ToDosState extends State<ToDos> {
       ),
       body: Column(
         children: [
-          Expanded(child: ToDoList(todos: _registeredToDos)),
+          Expanded(
+              child: ToDoList(
+            todos: _registeredToDos,
+            onDismiss: removeToDo,
+          )),
         ],
       ),
       floatingActionButton: FloatingActionButton.large(
