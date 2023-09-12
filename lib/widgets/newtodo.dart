@@ -27,7 +27,6 @@ class _NewTodoState extends State<NewTodo> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _toDoTextController.dispose();
     super.dispose();
   }
