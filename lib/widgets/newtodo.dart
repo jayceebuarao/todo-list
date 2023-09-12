@@ -34,7 +34,7 @@ class _NewTodoState extends State<NewTodo> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(24.0),
       child: Column(
         children: [
           TextField(
@@ -43,6 +43,7 @@ class _NewTodoState extends State<NewTodo> {
             ),
             controller: _toDoTextController,
           ),
+          const Spacer(),
           Row(children: [
             TextButton(
               onPressed: () {

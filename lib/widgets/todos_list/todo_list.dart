@@ -12,6 +12,7 @@ class ToDoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       itemCount: todos.length,
       itemBuilder: (context, index) => Dismissible(
           key: ValueKey(todos[index].task),

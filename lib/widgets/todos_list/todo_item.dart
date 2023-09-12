@@ -15,15 +15,19 @@ class _ToDoItemState extends State<ToDoItem> {
   Widget build(BuildContext context) {
     bool checkboxValue = widget.todo.isDone;
 
-    return CheckboxListTile(
-      value: checkboxValue,
-      onChanged: (value) {
-        setState(() {
-          checkboxValue = value!;
-          widget.todo.isDone = value;
-        });
-      },
-      title: Text(widget.todo.task),
+    return Card(
+      color: const Color.fromARGB(255, 255, 254, 194),
+      child: CheckboxListTile(
+        value: checkboxValue,
+        onChanged: (value) {
+          setState(() {
+            checkboxValue = value!;
+            widget.todo.isDone = value;
+          });
+        },
+        title: Text(widget.todo.task),
+        contentPadding: const EdgeInsets.all(16),
+      ),
     );
   }
 }
