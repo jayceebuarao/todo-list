@@ -14,6 +14,13 @@ class _NewTodoState extends State<NewTodo> {
   final TextEditingController _toDoTextController = TextEditingController();
 
   void saveNewItem() {
+    if (_toDoTextController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Please type out a task'),
+        behavior: SnackBarBehavior.floating,
+      ));
+      return;
+    }
     widget.updateToDo(ToDo(task: _toDoTextController.text));
     Navigator.pop(context);
   }
