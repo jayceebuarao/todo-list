@@ -13,6 +13,14 @@ class ToDos extends StatefulWidget {
 class _ToDosState extends State<ToDos> {
   final List<ToDo> _registeredToDos = [ToDo(task: 'Your Mom', isDone: false)];
 
+  void sortToDo() {
+    setState(() {
+      _registeredToDos.sort((a, b) {
+        return a.task.toLowerCase().compareTo(b.task.toLowerCase());
+      });
+    });
+  }
+
   void addNewToDo(ToDo newTodo) {
     setState(() {
       _registeredToDos.add(newTodo);
@@ -35,7 +43,14 @@ class _ToDosState extends State<ToDos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('To Do List'),
+        title: const Text('To Do'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: sortToDo,
+            icon: const Icon(Icons.sort),
+          )
+        ],
       ),
       body: Column(
         children: [
