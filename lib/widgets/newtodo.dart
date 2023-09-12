@@ -15,7 +15,7 @@ class _NewTodoState extends State<NewTodo> {
 
   void saveNewItem() {
     if (_toDoTextController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Please type out a task'),
         behavior: SnackBarBehavior.floating,
       ));
@@ -23,6 +23,13 @@ class _NewTodoState extends State<NewTodo> {
     }
     widget.updateToDo(ToDo(task: _toDoTextController.text));
     Navigator.pop(context);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _toDoTextController.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,10 +44,19 @@ class _NewTodoState extends State<NewTodo> {
             ),
             controller: _toDoTextController,
           ),
-          ElevatedButton(
-            onPressed: saveNewItem,
-            child: const Text('Save'),
-          )
+          Row(children: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); //removes widget from screen
+              },
+              child: const Text('Cancel'),
+            ),
+            const Spacer(),
+            ElevatedButton(
+              onPressed: saveNewItem,
+              child: const Text('Save'),
+            ),
+          ]),
         ],
       ),
     );
